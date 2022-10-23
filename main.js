@@ -21,20 +21,17 @@ if (numbers.some((n) => isNaN(n))) {
 
 let result;
 
-let sum = 0,
-  avg = 0,
-  max = 0;
-
 switch (command) {
   case "sum":
-    result = lib.sum(numbers);
-    break;
   case "avg":
-    result = lib.avg(numbers);
-    break;
   case "max":
-    result = lib.max(numbers);
+  case "med":
+  case "iqr":
+    result = lib[command](numbers);
+    if (result) console.log(result);
+    break;
+  case "outlier":
+    result = lib[command](numbers);
+    if (result) result.map((num) => console.log(num));
     break;
 }
-
-console.log(result);
